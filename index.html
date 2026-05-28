@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Latihan Ujian PJOK Kelas XI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="startScreen">
+      <div class="hero">
+        <div class="title">
+          <h1>Latihan Ujian PJOK Kelas XI</h1>
+          <p>
+            Soal diacak setiap mulai. Ada timer 5 menit per soal, HP, warning anti-curang, dan hasil akhir skala 0 sampai 100.
+            Bahasa soal dibuat lebih mirip buku dan lebih banyak soal cerita, tebak gerakan, serta lanjutan langkah gerak.
+          </p>
+          <div class="chips">
+            <span class="chip">50 soal acak</span>
+            <span class="chip">5 menit / soal</span>
+            <span class="chip">HP 3</span>
+            <span class="chip">Warning 2x = reset</span>
+          </div>
+          <div class="actions">
+            <button class="btn" id="startBtn">Mulai Ujian</button>
+            <button class="btn secondary" id="shufflePreviewBtn">Acak bank soal</button>
+          </div>
+          <div class="mobile-note">Catatan: deteksi “AI” di browser tidak bisa dibuat akurat 100% dari HTML/JS saja. Yang dipakai di sini adalah deteksi aktivitas mencurigakan umum.</div>
+        </div>
+        <div class="panel">
+          <h3>Aturan main</h3>
+          <ul>
+            <li>Setiap soal punya waktu 300 detik.</li>
+            <li>Jawaban benar bernilai 2 poin. 50 soal = maksimal 100.</li>
+            <li>Salah jawab mengurangi HP.</li>
+            <li>Keluar tab, copy, klik kanan, atau buka devtools memicu warning.</li>
+            <li>Kalau warning 2 kali, ujian direset ke menu awal.</li>
+          </ul>
+          <div id="warnBanner" class="warn-banner">Peringatan: aktivitas mencurigakan terdeteksi.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card hide" id="quizScreen">
+      <div class="quiz">
+        <div class="topbar">
+          <div class="stat"><div class="label">Soal</div><div class="value" id="statQuestion">1/50</div></div>
+          <div class="stat"><div class="label">Skor</div><div class="value" id="statScore">0</div></div>
+          <div class="stat"><div class="label">HP</div><div class="value" id="statHp">3</div></div>
+          <div class="stat"><div class="label">Warning</div><div class="value" id="statWarn">0/2</div></div>
+          <div class="stat"><div class="label">Waktu</div><div class="value" id="statTime">300</div></div>
+        </div>
+
+        <div class="progress"><div id="progressBar"></div></div>
+
+        <div class="qbox">
+          <div class="qmeta">
+            <span id="topicTag">PJOK XI</span>
+            <span id="timerHint">Jawab sebelum 0, ya. Masa begini aja mau drama.</span>
+          </div>
+          <h2 class="question" id="questionText"></h2>
+          <div class="answers" id="answerList"></div>
+          <div class="footerbar">
+            <div class="timer-wrap">
+              <div>Timer soal</div>
+              <div class="timerline"><div id="timerBar"></div></div>
+            </div>
+            <div id="questionStatus">Pilih jawaban yang paling tepat.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card hide" id="resultScreen">
+      <div class="result">
+        <h2>Ujian Selesai</h2>
+        <div class="score" id="finalScore">0</div>
+        <p id="resultText">Hasil ujian muncul di sini.</p>
+        <div class="actions" style="justify-content:center">
+          <button class="btn" id="restartBtn">Ulangi dari awal</button>
+          <button class="btn secondary" id="backHomeBtn">Kembali ke menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
